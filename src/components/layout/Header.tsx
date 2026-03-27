@@ -64,7 +64,7 @@ export function Header() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-9 h-9 rounded-full bg-brown-900 flex items-center justify-center
                             group-hover:bg-gold-500 transition-colors duration-300 shadow-sm">
-              <span className="text-cream-100 font-serif font-bold text-base leading-none">林</span>
+              <span className="text-cream-100 font-serif font-bold text-base leading-none">琳</span>
             </div>
             <div className="hidden sm:block">
               <p className="font-serif text-brown-900 font-semibold text-base leading-tight
