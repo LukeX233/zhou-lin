@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: '本周菜单',
-  description: '查看林记手工近期出品安排，提前预订。',
+  description: '查看琳记手工近期出品安排，提前预订。',
 }
 
 async function getAllItems(): Promise<MenuItem[]> {

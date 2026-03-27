@@ -72,11 +72,11 @@ function LoginContent() {
             </Link>
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-full bg-brown-900 flex items-center justify-center">
-                <span className="text-cream-100 font-serif font-bold text-lg">林</span>
+                <span className="text-cream-100 font-serif font-bold text-lg">琳</span>
               </div>
               <div>
                 <p className="font-serif text-brown-900 font-semibold leading-tight">Lin Dough Handmade</p>
-                <p className="text-brown-400 text-xs">林记手工</p>
+                <p className="text-brown-400 text-xs">琳记手工</p>
               </div>
             </div>
           </div>

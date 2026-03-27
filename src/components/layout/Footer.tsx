@@ -11,7 +11,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center">
-                <span className="text-white font-serif font-bold text-lg leading-none">林</span>
+                <span className="text-white font-serif font-bold text-lg leading-none">琳</span>
               </div>
               <div>
                 <p className="font-serif text-cream-100 font-semibold text-lg leading-tight">Lin Dough</p>
@@ -32,7 +32,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-start gap-2.5 text-sm text-cream-300 opacity-80">
                 <MapPin size={15} className="mt-0.5 text-gold-400 shrink-0" />
-                <span>Tech楼对面 / 网球场旁边的停车场<br />每周三、四、五 · 11:50–12:00</span>
+                <span>Tech楼对面 / 网球场旁边的停车场<br />出餐当日 · 11:50–13:00</span>
               </div>
             </div>
           </div>
@@ -51,12 +51,6 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="pt-2">
-              <p className="text-xs text-cream-300 opacity-50 leading-relaxed">
-                Licensed IL Cottage Food Operation.<br />
-                All items made in a home kitchen.
-              </p>
-            </div>
           </div>
         </div>
 

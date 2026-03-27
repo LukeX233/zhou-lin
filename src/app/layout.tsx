@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Lin Dough Handmade · 林记手工',
+    default: 'Lin Dough Handmade · 琳记手工',
     template: '%s · Lin Dough Handmade',
   },
   description: '芝加哥手工烘焙与家常美食 · Artisan baked goods & home-style dishes in the Chicago area.',

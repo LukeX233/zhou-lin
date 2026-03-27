@@ -79,7 +79,7 @@ export default async function HomePage() {
           {/* Title */}
           <h1 className="font-serif text-cream-100 text-5xl sm:text-6xl lg:text-7xl leading-[1.05] mb-4
                           animate-fade-up opacity-0 stagger-2 max-w-2xl">
-            林记
+            琳记
             <br />
             <span className="text-gold-400">手工烘焙</span>
           </h1>
@@ -250,7 +250,6 @@ export default async function HomePage() {
                   没有批量生产，没有流水线，只有花时间做出来的用心食物。
                 </p>
                 <p>
-                  作为伊利诺伊州合法注册的家庭食品工坊（Cottage Food），
                   我每周根据大家的需求和时令食材来安排出品，限量手作，新鲜到位。
                 </p>
               </div>
