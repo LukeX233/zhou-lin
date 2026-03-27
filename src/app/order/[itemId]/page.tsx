@@ -184,7 +184,7 @@ export default function OrderPage() {
   }
 
   function copyZelle() {
-    navigator.clipboard.writeText('lindough@example.com') // TODO: replace with real Zelle info
+    navigator.clipboard.writeText('3093711006')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
     toast.success('已复制Zelle账号')
@@ -441,7 +441,7 @@ export default function OrderPage() {
                         <span className="font-bold text-brown-900">{formatPrice(total)}</span>
                         <div className="mt-2 flex items-center gap-2">
                           <code className="bg-cream-200 px-3 py-1.5 rounded-lg text-brown-900 font-mono text-sm">
-                            lindough@example.com {/* TODO: replace */}
+                            3093711006 · Lin Zhou
                           </code>
                           <button onClick={copyZelle}
                             className="p-1.5 rounded-lg bg-cream-200 hover:bg-cream-300 text-brown-600 transition-colors">

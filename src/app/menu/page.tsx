@@ -109,7 +109,7 @@ export default async function MenuPage() {
             {[
               { step: '01', zh: '登录账号', en: 'Sign in', desc: '用邮箱获取登录链接，无需设置密码' },
               { step: '02', zh: '选择下单', en: 'Place Order', desc: '选择想要的商品和口味，填写联系方式' },
-              { step: '03', zh: 'Zelle付款', en: 'Pay via Zelle', desc: '下单后通过Zelle转账并上传截图确认' },
+              { step: '03', zh: 'Zelle付款', en: 'Pay via Zelle', desc: '下单后转账至 3093711006 (Lin Zhou)，系统自动确认' },
             ].map(s => (
               <div key={s.step} className="flex gap-4">
                 <div className="w-10 h-10 rounded-xl bg-brown-900 text-cream-100 flex items-center justify-center

@@ -115,15 +115,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── NOTICE STRIP ── */}
-      <div className="bg-gold-500 text-white py-3">
-        <div className="container-wide">
-          <p className="text-sm text-center font-medium">
-            🧾 下单后请通过 <strong>Zelle</strong> 完成付款，上传截图后订单即确认 ·
-            Orders confirmed upon Zelle payment screenshot upload
-          </p>
-        </div>
-      </div>
 
       {/* ── THIS WEEK'S SCHEDULE ── */}
       <section className="section">
@@ -243,12 +234,6 @@ export default async function HomePage() {
               <div className="absolute top-[30%] left-[30%] w-[42%] h-[44%] rounded-2xl overflow-hidden shadow-2xl
                               border-4 border-cream-100">
                 <Image src="/images/matcha-bread.jpg" alt="Matcha bread" fill sizes="100vw" className="object-cover" />
-              </div>
-              {/* Brand stamp */}
-              <div className="absolute bottom-6 left-6 bg-brown-900 text-cream-100 rounded-xl px-4 py-2.5
-                              shadow-lg border border-brown-700">
-                <p className="font-serif text-sm leading-tight">Made in</p>
-                <p className="font-serif text-lg font-semibold text-gold-400">Illinois 🏠</p>
               </div>
             </div>
 

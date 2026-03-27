@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MapPin, Clock, Instagram, MessageCircle } from 'lucide-react'
+import { MapPin, MessageCircle } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -32,11 +32,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-start gap-2.5 text-sm text-cream-300 opacity-80">
                 <MapPin size={15} className="mt-0.5 text-gold-400 shrink-0" />
-                <span>Illinois · Chicago Area<br />(下单后私信告知取餐地点)</span>
-              </div>
-              <div className="flex items-start gap-2.5 text-sm text-cream-300 opacity-80">
-                <Clock size={15} className="mt-0.5 text-gold-400 shrink-0" />
-                <span>取餐时间见每个商品详情<br />请准时前来</span>
+                <span>Tech楼对面 / 网球场旁边的停车场<br />每周三、四、五 · 11:50–12:00</span>
               </div>
             </div>
           </div>
@@ -45,14 +41,14 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-serif text-cream-100 text-lg">联系方式</h4>
             <div className="space-y-2">
-              <a href="#" className="flex items-center gap-2.5 text-sm text-cream-300 opacity-80 hover:opacity-100 hover:text-gold-400 transition-all">
+              <div className="flex items-center gap-2.5 text-sm text-cream-300 opacity-80">
                 <MessageCircle size={15} className="text-gold-400" />
-                微信：lindoughhandmade
-              </a>
-              <a href="#" className="flex items-center gap-2.5 text-sm text-cream-300 opacity-80 hover:opacity-100 hover:text-gold-400 transition-all">
-                <Instagram size={15} className="text-gold-400" />
-                @lindoughhandmade
-              </a>
+                微信：Sixiangdepaomachang
+              </div>
+              <div className="flex items-center gap-2.5 text-sm text-cream-300 opacity-80">
+                <span className="text-gold-400 text-xs font-bold">Z</span>
+                Zelle / Venmo：3093711006 · Lin Zhou
+              </div>
             </div>
 
             <div className="pt-2">
