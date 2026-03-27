@@ -192,7 +192,7 @@ export default async function HomePage() {
         <section className="bg-brown-900 relative overflow-hidden">
           {/* Background texture */}
           <div className="absolute inset-0 opacity-5">
-            <Image src="/images/matcha-bread.jpg" alt="" fill className="object-cover" />
+            <Image src="/images/matcha-bread.jpg" alt="" fill sizes="100vw" className="object-cover" />
           </div>
           <div className="relative container-wide py-16 sm:py-20">
             <div className="max-w-2xl mx-auto text-center">
@@ -235,14 +235,14 @@ export default async function HomePage() {
             {/* Images collage */}
             <div className="relative h-[480px] lg:h-[560px]">
               <div className="absolute top-0 left-0 w-[58%] h-[60%] rounded-2xl overflow-hidden shadow-xl">
-                <Image src="/images/taro-tiramisu.jpg" alt="Taro tiramisu" fill className="object-cover" />
+                <Image src="/images/taro-tiramisu.jpg" alt="Taro tiramisu" fill sizes="100vw" className="object-cover" />
               </div>
               <div className="absolute bottom-0 right-0 w-[58%] h-[60%] rounded-2xl overflow-hidden shadow-xl">
-                <Image src="/images/osmanthus-cups.jpg" alt="Osmanthus cups" fill className="object-cover" />
+                <Image src="/images/osmanthus-cups.jpg" alt="Osmanthus cups" fill sizes="100vw" className="object-cover" />
               </div>
               <div className="absolute top-[30%] left-[30%] w-[42%] h-[44%] rounded-2xl overflow-hidden shadow-2xl
                               border-4 border-cream-100">
-                <Image src="/images/matcha-bread.jpg" alt="Matcha bread" fill className="object-cover" />
+                <Image src="/images/matcha-bread.jpg" alt="Matcha bread" fill sizes="100vw" className="object-cover" />
               </div>
               {/* Brand stamp */}
               <div className="absolute bottom-6 left-6 bg-brown-900 text-cream-100 rounded-xl px-4 py-2.5

@@ -94,7 +94,7 @@ export default function OrdersPage() {
                       <div key={oi.id} className="flex items-center gap-3">
                         {oi.menu_item?.image_url && (
                           <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0">
-                            <Image src={oi.menu_item.image_url} alt={oi.menu_item.name_zh} fill className="object-cover" />
+                            <Image src={oi.menu_item.image_url} alt={oi.menu_item.name_zh} fill sizes="100vw" className="object-cover" />
                           </div>
                         )}
                         <div className="flex-1 min-w-0">

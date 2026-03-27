@@ -251,7 +251,7 @@ export default function OrderPage() {
                 <div className="flex gap-4 bg-cream-100 rounded-xl p-3">
                   {item.image_url && (
                     <div className="relative w-20 h-20 rounded-xl overflow-hidden shrink-0">
-                      <Image src={item.image_url} alt={item.name_zh} fill className="object-cover" />
+                      <Image src={item.image_url} alt={item.name_zh} fill sizes="100vw" className="object-cover" />
                     </div>
                   )}
                   <div>
@@ -469,7 +469,7 @@ export default function OrderPage() {
                     ${screenshotPreview ? 'border-matcha-400 bg-matcha-400/10' : 'border-cream-300 hover:border-gold-400 hover:bg-cream-200/50'}`}>
                     {screenshotPreview ? (
                       <div className="relative w-full h-full">
-                        <Image src={screenshotPreview} alt="Screenshot preview" fill className="object-contain rounded-2xl p-1" />
+                        <Image src={screenshotPreview} alt="Screenshot preview" fill sizes="100vw" className="object-contain rounded-2xl p-1" />
                       </div>
                     ) : (
                       <div className="flex flex-col items-center gap-2 text-brown-400">
@@ -533,7 +533,7 @@ export default function OrderPage() {
 
                 {item.image_url && (
                   <div className="relative w-full h-40 rounded-xl overflow-hidden mb-4">
-                    <Image src={item.image_url} alt={item.name_zh} fill className="object-cover" />
+                    <Image src={item.image_url} alt={item.name_zh} fill sizes="100vw" className="object-cover" />
                   </div>
                 )}
 

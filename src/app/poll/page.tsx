@@ -132,7 +132,7 @@ export default function PollPage() {
       {/* Header */}
       <div className="bg-brown-900 relative overflow-hidden py-14 sm:py-20">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/images/osmanthus-cups.jpg" alt="" fill className="object-cover" />
+          <Image src="/images/osmanthus-cups.jpg" alt="" fill sizes="100vw" className="object-cover" />
         </div>
         <div className="relative container-wide text-center">
           <div className="flex items-center justify-center gap-2 mb-3">

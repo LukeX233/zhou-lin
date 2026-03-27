@@ -85,7 +85,7 @@ export default function AdminMenuPage() {
               <div key={item.id} className={cn('card group', !item.is_active && 'opacity-60')}>
                 <div className="relative h-40 bg-cream-200 overflow-hidden">
                   {item.image_url ? (
-                    <Image src={item.image_url} alt={item.name_zh} fill className="object-cover" />
+                    <Image src={item.image_url} alt={item.name_zh} fill sizes="100vw" className="object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-3xl">🍱</div>
                   )}

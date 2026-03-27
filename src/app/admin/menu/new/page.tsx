@@ -232,7 +232,7 @@ export default function NewMenuItemPage() {
                     className={`relative w-full aspect-square rounded-xl overflow-hidden border-2 transition-all
                       ${imageUrl === src ? 'border-gold-500 ring-2 ring-gold-400' : 'border-transparent hover:border-cream-400'}`}
                   >
-                    <Image src={src} alt="" fill className="object-cover" />
+                    <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
                   </button>
                 ))}
               </div>
@@ -253,7 +253,7 @@ export default function NewMenuItemPage() {
               ${imagePreview ? 'border-matcha-400 bg-matcha-400/10' : 'border-cream-300 hover:border-gold-400 hover:bg-cream-200/50'}`}>
               {imagePreview ? (
                 <div className="relative w-full h-full">
-                  <Image src={imagePreview} alt="Preview" fill className="object-contain rounded-2xl p-1" />
+                  <Image src={imagePreview} alt="Preview" fill sizes="100vw" className="object-contain rounded-2xl p-1" />
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-2 text-brown-400">

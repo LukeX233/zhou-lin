@@ -174,7 +174,7 @@ function AdminOrdersContent() {
                     <div key={oi.id} className="flex items-center gap-3">
                       {oi.menu_item?.image_url && (
                         <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
-                          <Image src={oi.menu_item.image_url} alt="" fill className="object-cover" />
+                          <Image src={oi.menu_item.image_url} alt="" fill sizes="100vw" className="object-cover" />
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
