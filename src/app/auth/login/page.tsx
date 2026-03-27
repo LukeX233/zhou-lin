@@ -110,7 +110,7 @@ function LoginContent() {
 
           <p className="text-center text-xs text-brown-400 leading-relaxed">
             点击后将跳转至 Google 完成登录。<br />
-            <span className="opacity-70">You'll be redirected to Google to sign in.</span>
+            <span className="opacity-70">You&apos;ll be redirected to Google to sign in.</span>
           </p>
 
         </div>
