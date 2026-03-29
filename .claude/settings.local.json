@@ -4,7 +4,13 @@
       "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
       "Bash(npm install:*)",
       "Bash(npx next:*)",
-      "Bash(cat supabase/migrations/*.sql)"
+      "Bash(cat supabase/migrations/*.sql)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npm run:*)",
+      "Bash(grep -rn \"林\\\\|cottage\\\\|Illinois\" src/ --include=*.tsx)",
+      "Bash(grep -rn \"琳\\\\|林\" src/ --include=*.tsx --include=*.ts)"
     ]
   }
 }
