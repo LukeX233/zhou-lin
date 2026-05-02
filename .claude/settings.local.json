@@ -10,7 +10,8 @@
       "Bash(git push:*)",
       "Bash(npm run:*)",
       "Bash(grep -rn \"林\\\\|cottage\\\\|Illinois\" src/ --include=*.tsx)",
-      "Bash(grep -rn \"琳\\\\|林\" src/ --include=*.tsx --include=*.ts)"
+      "Bash(grep -rn \"琳\\\\|林\" src/ --include=*.tsx --include=*.ts)",
+      "mcp__nano-banana__generate_image"
     ]
   }
 }

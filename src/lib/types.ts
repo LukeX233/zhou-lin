@@ -75,7 +75,9 @@ export interface Order {
   customer_wechat: string | null
   status: OrderStatus
   total_amount: number
-  payment_screenshot_url: string | null
+  order_code: string | null
+  plaid_matched: boolean
+  plaid_transaction_id: string | null
   notes: string | null
   created_at: string
   updated_at: string

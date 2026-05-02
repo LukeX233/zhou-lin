@@ -30,7 +30,6 @@ export default function NewMenuItemPage() {
   const [pickupTime, setPickupTime] = useState('')
   const [capacity,   setCapacity]   = useState('')
   const [imageUrl,   setImageUrl]   = useState('')  // if using existing public image
-  const [useLocalImg, setUseLocalImg] = useState(false)
 
   const [groups, setGroups] = useState<OptionGroup[]>([])
 

@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { isAdmin, formatPrice, ORDER_STATUS_LABELS } from '@/lib/utils'
 import Link from 'next/link'
-import { ShoppingBag, Calendar, Vote, DollarSign, Clock, CheckCircle2, ChevronRight } from 'lucide-react'
+import { ShoppingBag, Calendar, Vote, DollarSign, CheckCircle2, ChevronRight, Link2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { Order } from '@/lib/types'
 
@@ -64,6 +64,7 @@ export default async function AdminDashboard() {
             { href: '/admin/orders', label: '订单管理', icon: ShoppingBag },
             { href: '/admin/menu',   label: '菜单管理', icon: Calendar },
             { href: '/admin/poll',   label: '投票管理', icon: Vote },
+            { href: '/admin/plaid',  label: 'Plaid银行', icon: Link2 },
           ].map(nav => (
             <Link key={nav.href} href={nav.href}
               className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-cream-300
