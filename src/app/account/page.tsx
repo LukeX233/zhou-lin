@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { User, Phone, MessageCircle, Save, Loader2, ShoppingBag, LogOut } from 'lucide-react'
+import { User, Phone, MessageCircle, Save, Loader2, ShoppingBag, LogOut, DollarSign } from 'lucide-react'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
 import type { User as SupabaseUser } from '@supabase/supabase-js'
@@ -12,12 +12,13 @@ export default function AccountPage() {
   const router   = useRouter()
   const supabase = createClient()
 
-  const [user,    setUser]    = useState<SupabaseUser | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [saving,  setSaving]  = useState(false)
-  const [name,    setName]    = useState('')
-  const [phone,   setPhone]   = useState('')
-  const [wechat,  setWechat]  = useState('')
+  const [user,      setUser]      = useState<SupabaseUser | null>(null)
+  const [loading,   setLoading]   = useState(true)
+  const [saving,    setSaving]    = useState(false)
+  const [name,      setName]      = useState('')
+  const [phone,     setPhone]     = useState('')
+  const [wechat,    setWechat]    = useState('')
+  const [zelleName, setZelleName] = useState('')
 
   useEffect(() => {
     async function load() {
@@ -27,7 +28,7 @@ export default function AccountPage() {
 
       const { data: profile } = await supabase
         .from('profiles')
-        .select('name, phone, wechat')
+        .select('name, phone, wechat, zelle_name')
         .eq('id', u.id)
         .maybeSingle()
 
@@ -35,6 +36,7 @@ export default function AccountPage() {
         setName(profile.name ?? '')
         setPhone(profile.phone ?? '')
         setWechat(profile.wechat ?? '')
+        setZelleName(profile.zelle_name ?? '')
       }
       setLoading(false)
     }
@@ -53,6 +55,7 @@ export default function AccountPage() {
           name: name.trim() || null,
           phone: phone.trim() || null,
           wechat: wechat.trim() || null,
+          zelle_name: zelleName.trim() || null,
         })
       if (error) throw error
       toast.success('信息已更新！')
@@ -136,6 +139,23 @@ export default function AccountPage() {
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                   />
+                  <p className="text-xs text-brown-400 mt-1">用于接收订单通知短信</p>
+                </div>
+                <div>
+                  <label className="label">
+                    <span className="flex items-center gap-1.5">
+                      <DollarSign size={13} /> Zelle 账户名 · Zelle Name
+                    </span>
+                  </label>
+                  <input
+                    className="input"
+                    placeholder="您 Zelle 转账时显示的名字"
+                    value={zelleName}
+                    onChange={e => setZelleName(e.target.value)}
+                  />
+                  <p className="text-xs text-brown-400 mt-1">
+                    请填写您 Zelle 转账时显示的姓名，方便店主核对付款。付款至：3093711006 Lin Zhou
+                  </p>
                 </div>
                 <div>
                   <label className="label">

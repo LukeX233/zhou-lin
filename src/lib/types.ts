@@ -10,6 +10,7 @@ export interface Profile {
   name: string | null
   phone: string | null
   wechat: string | null
+  zelle_name: string | null
   created_at: string
 }
 
