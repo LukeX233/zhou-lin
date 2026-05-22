@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { formatDate, formatPrice, getSpotsLeft } from '@/lib/utils'
-import { generateOrderCode } from '@/lib/plaid'
 import {
   ChevronLeft, Minus, Plus, CheckCircle2,
   AlertCircle, Loader2, Copy, Check
@@ -36,10 +35,9 @@ export default function OrderPage() {
   const [notes,  setNotes]  = useState('')
 
   // Done step
-  const [submitting,  setSubmitting]  = useState(false)
-  const [orderCode,   setOrderCode]   = useState<string | null>(null)
-  const [copiedCode,  setCopiedCode]  = useState(false)
-  const [copiedPhone, setCopiedPhone] = useState(false)
+  const [submitting,   setSubmitting]   = useState(false)
+  const [copiedPhone,  setCopiedPhone]  = useState(false)
+  const [orderTotal,   setOrderTotal]   = useState(0)
 
   useEffect(() => {
     async function load() {
@@ -101,7 +99,6 @@ export default function OrderPage() {
     setSubmitting(true)
     try {
       const total = computeTotal()
-      const code  = generateOrderCode()
 
       const { data: orderData, error: orderError } = await supabase
         .from('orders')
@@ -112,7 +109,7 @@ export default function OrderPage() {
           customer_wechat: wechat.trim() || null,
           status:          'pending_payment',
           total_amount:    total,
-          order_code:      code,
+          unique_amount:   total,
           notes:           notes.trim() || null,
         })
         .select('id')
@@ -136,7 +133,7 @@ export default function OrderPage() {
         await supabase.from('order_item_selections').insert(selectionInserts)
       }
 
-      // Save name/phone/wechat to profile for next time
+      // Save contact info to profile so it auto-fills next time
       if (user) {
         await supabase.from('profiles').update({
           name:   name.trim(),
@@ -145,7 +142,7 @@ export default function OrderPage() {
         }).eq('id', user.id)
       }
 
-      setOrderCode(code)
+      setOrderTotal(total)
       setStep('done')
     } catch (err) {
       console.error(err)
@@ -153,14 +150,6 @@ export default function OrderPage() {
     } finally {
       setSubmitting(false)
     }
-  }
-
-  function copyCode() {
-    if (!orderCode) return
-    navigator.clipboard.writeText(`#${orderCode}`)
-    setCopiedCode(true)
-    setTimeout(() => setCopiedCode(false), 2000)
-    toast.success('已复制订单号')
   }
 
   function copyPhone() {
@@ -339,9 +328,8 @@ export default function OrderPage() {
 
                 <div>
                   <label className="label">姓名 · Name <span className="text-terra-500">*</span></label>
-                  <input className="input" placeholder="您的姓名（请与Zelle账户姓名一致）"
+                  <input className="input" placeholder="您的姓名"
                     value={name} onChange={e => setName(e.target.value)} />
-                  <p className="text-xs text-brown-400 mt-1">⚠️ 请填写与您Zelle账户一致的姓名，用于自动匹配付款</p>
                 </div>
                 <div>
                   <label className="label">手机号码 · Phone</label>
@@ -370,68 +358,44 @@ export default function OrderPage() {
               </div>
             )}
 
-            {/* ── STEP: Done — show payment instructions ── */}
-            {step === 'done' && orderCode && (
+            {/* ── STEP: Done ── */}
+            {step === 'done' && (
               <div className="space-y-4">
                 <div className="card p-8 text-center space-y-3">
                   <div className="w-14 h-14 rounded-full bg-matcha-400/20 flex items-center justify-center mx-auto">
                     <CheckCircle2 size={28} className="text-matcha-500" />
                   </div>
                   <h2 className="heading-md">订单已提交！</h2>
-                  <p className="text-brown-500 text-sm">请按以下步骤完成付款，系统将自动确认您的订单</p>
+                  <p className="text-brown-500 text-sm">请完成以下 Zelle 转账，店主核对后将确认您的订单</p>
                 </div>
 
-                {/* Order code — prominently shown */}
                 <div className="card p-6 border-2 border-gold-400 bg-amber-50 space-y-4">
-                  <p className="font-serif text-brown-900 font-semibold text-lg">💳 Zelle 付款步骤</p>
+                  <p className="font-serif text-brown-900 font-semibold text-lg">Zelle 付款</p>
 
-                  <div className="bg-white rounded-2xl p-4 text-center border border-gold-300">
-                    <p className="text-xs text-brown-400 mb-1">您的订单号（备注必填）</p>
-                    <div className="flex items-center justify-center gap-3">
-                      <span className="font-mono text-4xl font-bold text-brown-900 tracking-widest">
-                        #{orderCode}
-                      </span>
-                      <button onClick={copyCode}
-                        className="p-2 rounded-xl bg-cream-200 hover:bg-cream-300 text-brown-600 transition-colors">
-                        {copiedCode ? <Check size={16} className="text-matcha-500" /> : <Copy size={16} />}
+                  <div className="bg-white rounded-2xl p-5 space-y-3 border border-gold-200">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-brown-500">付款金额</span>
+                      <span className="font-serif text-2xl font-bold text-brown-900">{formatPrice(orderTotal)}</span>
+                    </div>
+                    <div className="h-px bg-cream-200" />
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs text-brown-400 mb-0.5">转账至</p>
+                        <p className="font-mono font-semibold text-brown-900">3093711006</p>
+                        <p className="text-xs text-brown-500">Lin Zhou</p>
+                      </div>
+                      <button onClick={copyPhone}
+                        className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cream-200
+                                   hover:bg-cream-300 text-brown-600 text-sm transition-colors">
+                        {copiedPhone ? <Check size={14} className="text-matcha-500" /> : <Copy size={14} />}
+                        复制号码
                       </button>
                     </div>
                   </div>
 
-                  <ol className="space-y-3 text-sm text-brown-700">
-                    <li className="flex gap-3">
-                      <span className="w-5 h-5 rounded-full bg-gold-500 text-white text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
-                      <span>打开银行 App 或 Zelle</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-5 h-5 rounded-full bg-gold-500 text-white text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
-                      <div className="flex-1">
-                        <span>向以下手机号转 </span>
-                        <strong className="text-brown-900">{formatPrice(total)}</strong>
-                        <div className="mt-2 flex items-center gap-2">
-                          <code className="bg-cream-200 px-3 py-1.5 rounded-lg text-brown-900 font-mono text-sm">
-                            3093711006 · Lin Zhou
-                          </code>
-                          <button onClick={copyPhone}
-                            className="p-1.5 rounded-lg bg-cream-200 hover:bg-cream-300 text-brown-600 transition-colors">
-                            {copiedPhone ? <Check size={14} className="text-matcha-500" /> : <Copy size={14} />}
-                          </button>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-5 h-5 rounded-full bg-gold-500 text-white text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
-                      <div>
-                        <strong>备注（memo/note）填写：</strong>
-                        <span className="ml-1 font-mono bg-cream-200 px-2 py-0.5 rounded-lg text-brown-900">#{orderCode}</span>
-                        <p className="text-xs text-terra-600 mt-1">⚠️ 备注不填写可能导致订单无法自动确认</p>
-                      </div>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="w-5 h-5 rounded-full bg-gold-500 text-white text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
-                      <span>付款完成后系统将自动确认，通常在30分钟内</span>
-                    </li>
-                  </ol>
+                  <p className="text-xs text-brown-500 text-center">
+                    转账完成后店主会手动核对，订单将在当天内确认
+                  </p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
